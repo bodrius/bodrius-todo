@@ -12,7 +12,9 @@ import {
   Image
 } from "react-native";
 
+
 import shortid from "shortid";
+import TodoList from '../todoList/TodoList'
 
 const TextInputT = () => {
   const [value, setValue] = useState("");
@@ -70,66 +72,7 @@ const TextInputT = () => {
         <Text style={styles.textBtn}>Submit</Text>
       </TouchableOpacity>
 
-      <View style={{ height: "80%" }}>
-        <SafeAreaView>
-          <FlatList
-            data={todo}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => {
-              // console.log(item)
-              return (
-                <View
-                  style={{
-                    borderWidth: 1,
-                    borderRadius: 5,
-                    borderColor: "black",
-                    marginHorizontal: 20,
-                    marginBottom: 10,
-                  }}
-                >
-                  <Text
-                    style={{
-                      backgroundColor: `${item.bgColor}`,
-                      fontSize: 30,
-                      padding: 5,
-                      textAlign: "center",
-                    }}
-                  >
-                    {item.title}
-                  </Text>
-                  <Text style={styles.textDefault}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Eligendi non quis exercitationem culpa nesciunt nihil aut
-                    nostrum explicabo.
-                  </Text>
-                  <TouchableOpacity
-                    onPress={() => removalNotes(item.id)}
-                    activeOpacity={1}
-                  >
-                    <Text
-                      style={{
-                        position: "absolute",
-                        bottom: 102,
-                        right: 20,
-                        color: "snow",
-                        fontWeight:"900",
-                        fontSize: 25,
-                        backgroundColor:"red",
-                        paddingLeft:10,
-                        paddingRight:10,
-                        height:30,
-                        borderRadius:10
-                      }}
-                    >
-                      X
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              );
-            }}
-          />
-        </SafeAreaView>
-      </View>
+      <TodoList todo={todo} removalNotes={removalNotes}/>
     </>
   );
 };
@@ -159,12 +102,5 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "600",
     color: "#f8f8ff",
-  },
-  textDefault: {
-    fontSize: 20,
-    textAlign: "left",
-    paddingLeft: 10,
-    color: "snow",
-    backgroundColor: "#6495ed",
-  },
+  }
 });
