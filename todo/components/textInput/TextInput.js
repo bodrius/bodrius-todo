@@ -21,7 +21,7 @@ const TextInputT = () => {
   const [todo, setTodo] = useState([]);
 
   const getNote = (bgColor) => {
-    setTodo([...todo, { title: value, id: shortid.generate(), bgColor }].reverse());
+    setTodo([ { title: value, id: shortid.generate(), bgColor }, ...todo]);
     setValue("");
   };
   console.log(todo);
